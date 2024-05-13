@@ -38,7 +38,7 @@ Username: John
 Password: 1234
 
 Created New Account.
-Welcome Matt!
+Welcome John!
 ======================
 Menu:
 1. Play
