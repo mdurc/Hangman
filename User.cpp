@@ -72,10 +72,17 @@ bool operator<(const User& a, const User& b){
 }
 
 std::ostream& operator<<(std::ostream& os, const User& user){
-    os << "======================\n";
-    os << "Name: " << user.m_name << '\n';
-    os << "Highest Streak: " << user.m_highest_streak << '\n';
-    os << "======================" << std::endl;
+    int z=user.m_name.size();
+    os << std::setw(5) << '|' 
+       << std::setw(2 + z) << user.m_name << std::setw(15 - z) << '|'
+       << std::setw(5) << user.m_points << std::setw(6) << '|' 
+       << std::setw(7) << user.m_highest_streak << std::setw(7) << '|' 
+       << std::setw(7) << user.m_streak << std::setw(7) << '|' 
+       << std::setw(7) << user.m_earliest_win << std::setw(7) << '|'
+       << std::setw(5) << user.win_count << std::setw(5) << '|'
+       << std::setw(5) << user.loss_count << std::setw(4) << '|'
+       << std::setw(4) << (100 * user.win_count) / (user.win_count + user.loss_count) << std::endl;
+    os << "---------------------------------------------------------------------------------------------------------";
     return os;
 }
 

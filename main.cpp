@@ -7,6 +7,15 @@
 #include "Game.cpp"
 
 
+std::string title_ascii = 
+    " _   _                                          \n"
+    "| | | | __ _ _ __   __ _ _ __ ___   __ _ _ __  \n"
+    "| |_| |/ _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\ \n"
+    "|  _  | (_| | | | | (_| | | | | | | (_| | | | |\n"
+    "|_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|\n"
+    "                    |___/";
+
+
 void parse_user_data(const std::string& data_file,
                      std::unordered_map<std::string, User>& user_map) {
     std::ifstream user_data(data_file);
@@ -41,6 +50,7 @@ void rewrite_user_data(const std::unordered_map<std::string, User>& user_map) {
 }
 
 User& login(std::unordered_map<std::string, User>& user_map) {
+    std::cout << title_ascii << std::endl;
     std::string name, password;
 
     std::cout << "Login\nUsername: ";
@@ -65,13 +75,19 @@ User& login(std::unordered_map<std::string, User>& user_map) {
 }
 
 void display_leaderboard(const std::unordered_map<std::string, User>& user_map) {
+    std::cout << title_ascii << std::endl;
+    std::cout << "============================================== Leaderboard ==============================================" << std::endl;
+    std::cout << "   Pos   |      Name      |  Points  | High Streak | Curr Streak | Earliest Win |  Wins  | Losses | Win %" << std::endl;
     std::set<User> leaderboard;
     for (const std::pair<std::string, User>& u : user_map) {
         leaderboard.insert(u.second);
     }
+    std::cout << "---------------------------------------------------------------------------------------------------------\n";
+    int i=0;
     for (const User& u : leaderboard) {
-        std::cout << u << std::endl;
+        std::cout << std::setw(5) << ++i << u << std::endl;
     }
+    std::cout << std::endl;
 }
 
 int display_menu() {
@@ -197,19 +213,9 @@ void add_new_word(std::vector<std::string>& categories) {
 }
 
 int main() {
-    std::string line;
 
     // intro display
     CLEAR_CONSOLE
-    std::ifstream title("art/title.txt");
-    if (!title.is_open()) {
-        std::cerr << "File not found: art/title.txt" << std::endl;
-        exit(1);
-    }
-    while (std::getline(title, line)) {
-        std::cout << line << std::endl;
-    }
-    title.close();
 
     // parse the different category_in for the words
     std::vector<std::string> categories;
@@ -218,6 +224,7 @@ int main() {
         std::cerr << "File not found: word_bank/categories.txt" << std::endl;
         exit(1);
     }
+    std::string line;
     while (std::getline(category_in, line)) {
         categories.push_back(line);
     }
@@ -230,7 +237,6 @@ int main() {
 
     bool run_game = true;
     while (run_game) {
-        std::cout << std::endl;
         User& user = login(user_map);
         bool logged_in = true;
         while (logged_in) {

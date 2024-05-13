@@ -100,7 +100,7 @@ void print_guesses(const std::unordered_set<char>& l,
 void Game::start_game(User& user){
     while(!char_indices.empty()){
         CLEAR_CONSOLE
-        std::cout << "FOR DEBUGGING: " << filled << ", curr points: " << game_points << std::endl;
+        //std::cout << "FOR DEBUGGING: " << filled << ", points for this word: " << game_points << std::endl;
         std::cout << *this << '\n';
 
         print_guesses(guessed_letters, guessed_words);
