@@ -48,8 +48,8 @@ Menu:
 5. Quit
 Enter [1-5]:
 ```
-Where 1: Begin playing with a random category and random word from category
-Where 2: Add a word to an existing category or create a new category and word.
-Where 3: Shows user's statistics: highest streak, current streak, points, earliest stage win, total games, wins, losses, and win percentage
+- Where 1: Begin playing with a random category and random word from category
+- Where 2: Add a word to an existing category or create a new category and word.
+- Where 3: Shows user's statistics: highest streak, current streak, points, earliest stage win, total games, wins, losses, and win percentage
     - 3: Prompts options to rename your username, change your password, logout, clear data, or delete your account
-Where 4: Displays a leaderboard, ranking all users in the `user_data.txt` file by points.
+- Where 4: Displays a leaderboard, ranking all users in the `user_data.txt` file by points.
